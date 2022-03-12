@@ -1,20 +1,11 @@
-import { ApolloServer, gql } from "apollo-server";
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "444",
-  },
-};
+import { ApolloServer } from "apollo-server";
+import client from "./client";
+import schema from "./scheme";
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
 });
 
-server.listen().then(() => console.log("running on port:4000"));
+server
+  .listen()
+  .then(() => console.log("running on port ---> http://localhost:4000"));
