@@ -1,11 +1,12 @@
+require("dotenv").config();
 import { ApolloServer } from "apollo-server";
-import client from "./client";
 import schema from "./scheme";
-
+const PORT = process.env.PORT;
 const server = new ApolloServer({
   schema,
 });
-
 server
-  .listen()
-  .then(() => console.log("running on port ---> http://localhost:4000"));
+  .listen(PORT)
+  .then(() =>
+    console.log(`Server is running on port ---> http://localhost:${PORT}`)
+  );
